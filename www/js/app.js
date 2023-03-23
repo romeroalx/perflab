@@ -21,15 +21,15 @@ app.config([
 				reloadOnSearch: false
 			})
 			.when('/config/new', {
-				templateUrl: 'partials/config-edit.html',
+				templateUrl: 'partials/config-edit-pdns.html',
 				controller: 'configEditController'
 			})
 			.when('/config/clone/:type/:clone', {
-				templateUrl: 'partials/config-edit.html',
+				templateUrl: 'partials/config-edit-pdns.html',
 				controller: 'configEditController'
 			})
 			.when('/config/edit/:id', {
-				templateUrl: 'partials/config-edit.html',
+				templateUrl: 'partials/config-edit-pdns.html',
 				controller: 'configEditController'
 			})
 			.when('/config/run/:config_id/', {
