@@ -1,0 +1,3 @@
+rpz.redirect. 60 IN SOA ns.rpz.redirect. hostmaster.rpz.redirect. 1 10800 60 3600 3600
+myredirect.dom.rpz.redirect.                IN A 127.0.0.1
+*.myredirect.dom.rpz.redirect.              IN A 127.0.0.1

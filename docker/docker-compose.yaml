@@ -1,0 +1,22 @@
+version: "3.9"
+name: perflab
+services:
+  pdns-auth:
+    deploy:
+      replicas: 1
+    image: powerdns/pdns-auth-master:latest
+    network_mode: host
+    # entrypoint: /usr/local/sbin/pdns_server --config-name=lmdb
+    # Use -e from script docker compose run -e DEBUG=1 web python console.py
+    entrypoint: ${PDNS_BIN_DIR}/pdns_server --config-name=${PDNS_BACKEND}
+    volumes:
+      - ../run/etc/pdns:/etc/powerdns
+      - ../run/scripts:/tmp/scripts
+  pdns-rec:
+    deploy:
+      replicas: 1
+    image: powerdns/pdns-recursor-master:latest
+    network_mode: host
+    entrypoint: ${PDNS_BIN_FOLDER}/pdns_recursor
+    volumes:
+      - ../run/etc/pdns-recursor:/etc/powerdns

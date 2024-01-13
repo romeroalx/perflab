@@ -1,0 +1,28 @@
+version: "3.9"
+name: perflab
+services:
+  pdns-auth:
+    deploy:
+      replicas: 1
+    image: ${AUTH_IMAGE_NAME}:${AUTH_IMAGE_TAG}
+    network_mode: host
+    entrypoint: ${PDNS_BIN_DIR}/pdns_server --config-name=${PDNS_BACKEND} ${ADDITIONAL_PARAMS_AUTH}
+    volumes:
+      - ../run/etc/pdns:/etc/powerdns
+      - ../run/scripts:/tmp/scripts
+    environment:
+      - PDNS_BIN_DIR
+      - PDNS_BACKEND
+      - PDNS_ZONES_DIR
+      - ADDITIONAL_PARAMS_AUTH
+  pdns-rec:
+    deploy:
+      replicas: 1
+    image:  ${RECURSOR_IMAGE_NAME}:${RECURSOR_IMAGE_TAG}
+    network_mode: host
+    entrypoint: ${PDNS_BIN_DIR}/pdns_recursor ${ADDITIONAL_PARAMS_REC}
+    volumes:
+      - ../run/etc/pdns-recursor:/etc/powerdns
+    environment:
+      - PDNS_BIN_DIR
+      - ADDITIONAL_PARAMS_REC

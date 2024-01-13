@@ -1,0 +1,25 @@
+$ORIGIN .
+.	3600	IN	    SOA	    a.root-servers.pdns. email.root.pdns 2020101900 1800 900 604800 600
+.	3600    IN	    NS	    a.root-servers.pdns.
+;
+.                       3600      NS    a.root-servers.pdns.
+a.root-servers.pdns.    3600     A     192.168.0.2
+;
+str.			3600	IN	NS	ns1.str.
+str.			3600	IN	NS	ns2.str.
+;
+com.			3600	IN	NS	ns1.com.
+com.			3600	IN	NS	ns2.com.
+;
+mod.			3600	IN	NS	ns1.mod.
+mod.			3600	IN	NS	ns2.mod.
+;
+blk.			3600	IN	NS	ns1.blk.
+blk.			3600	IN	NS	ns2.blk.
+;
+ch.			    3600	IN	NS	ns1.ch.
+ch.			    3600	IN	NS	ns2.ch.
+;
+example.		3600	IN	NS	ns1.example.
+example.		3600	IN	NS	ns2.example.
+;

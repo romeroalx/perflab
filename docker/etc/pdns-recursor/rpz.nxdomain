@@ -1,0 +1,82 @@
+rpz.nxdomain.                         60  IN SOA   ns.rpz.nxdomain. hostmaster.rpz.nxdomain. 1 10800 60 3600 3600
+
+; https://www.as112.net/
+
+; PRT 10.0.0.0/8
+10.in-addr.arpa.rpz.nxdomain.         60  IN  CNAME  .
+*.10.in-addr.arpa.rpz.nxdomain.       60  IN  CNAME  .
+
+; PTR 192.168.0.0/16
+168.192.in-addr.arpa.rpz.nxdomain.    60  IN  CNAME  .
+*.168.192.in-addr.arpa.rpz.nxdomain.  60  IN  CNAME  .
+
+; PTR 172.16.0.0/12
+16.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.16.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+17.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.17.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+18.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.18.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+19.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.19.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+20.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.20.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+21.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.21.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+22.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.22.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+23.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.23.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+24.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.24.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+25.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.25.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+26.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.26.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+27.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.27.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+28.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.28.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+29.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.29.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+30.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.30.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+31.172.in-addr.arpa.rpz.nxdomain.     60  IN  CNAME  .
+*.31.172.in-addr.arpa.rpz.nxdomain.   60  IN  CNAME  .
+
+; PTR 169.254.0.0/16
+254.169.in-addr.arpa.rpz.nxdomain.    60  IN  CNAME  .
+*.254.169.in-addr.arpa.rpz.nxdomain.  60  IN  CNAME  .
+
+; 
+home.arpa.rpz.nxdomain.               60  IN  CNAME  .
+*.home.arpa.rpz.nxdomain.             60  IN  CNAME  .
+
+;;
+; Private domains
+;;
+
+home.rpz.nxdomain.                      60  IN  CNAME  .
+*.home.rpz.nxdomain.                    60  IN  CNAME  .
+
+corp.rpz.nxdomain.                      60  IN  CNAME  .
+*.corp.rpz.nxdomain.                    60  IN  CNAME  .
+
+mail.rpz.nxdomain.                      60  IN  CNAME  .
+*.mail.rpz.nxdomain.                    60  IN  CNAME  .
+
+dom.rpz.nxdomain.                       60  IN  CNAME  .
+*.dom.rpz.nxdomain.                     60  IN  CNAME  .
+
+local.rpz.nxdomain.                     60  IN  CNAME  .
+*.local.rpz.nxdomain.                   60  IN  CNAME  .
+
+localhost.rpz.nxdomain.                 60  IN  CNAME  .
+*.localhost.rpz.nxdomain.               60  IN  CNAME  .
+
+
+test.rpz.nxdomain.                      60  IN  CNAME  .
+*.test.rpz.nxdomain.                    60  IN  CNAME  .
+
+lan.rpz.nxdomain.                       60  IN  CNAME  .
+*.lan.rpz.nxdomain.                     60  IN  CNAME  .

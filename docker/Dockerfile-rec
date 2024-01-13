@@ -1,0 +1,63 @@
+FROM debian:11
+
+ARG HOME=/root
+ARG REPO_BRANCH=actions-debian-container-dev
+ARG REPO_URL=https://github.com/romeroalx/pdns.git
+
+# Reusable layer for base update
+RUN apt-get update && apt-get -y dist-upgrade && apt-get clean
+
+# Install basic SW and deugging tools
+RUN DEBIAN_FRONTEND=noninteractive apt-get -o dir::cache::archives="$APT_CACHE_DIR" -y install \
+    sudo git curl gnupg software-properties-common wget \
+    ca-certificates apt-utils build-essential vim \
+    iproute2 net-tools iputils-* ifupdown cmake acl \
+    npm time mariadb-client postgresql-client jq python dnsutils
+
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
+# Add LLVM repository
+RUN add-apt-repository 'deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-12 main'
+RUN wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+RUN apt-get update
+
+# Clone repo an execute basic configuration. Do not delete folder
+WORKDIR ${HOME}
+RUN git clone ${REPO_URL}
+
+# Install required packages
+WORKDIR ${HOME}/pdns
+RUN git checkout origin/${REPO_BRANCH}
+
+ARG ASAN_OPTIONS='detect_leaks=0'
+ENV ASAN_OPTIONS=${ASAN_OPTIONS}
+
+ARG SANITIZERS=asan+ubsan
+ENV SANITIZERS=${SANITIZERS}
+
+ARG UBSAN_OPTIONS='print_stacktrace=1:halt_on_error=1:suppressions='${HOME}'/pdns/build-scripts/UBSan.supp'
+ENV UBSAN_OPTIONS=${UBSAN_OPTIONS}
+
+ARG UNIT_TESTS=yes
+ENV UNIT_TESTS=${UNIT_TESTS}
+
+RUN build-scripts/gh-actions-setup-inv
+
+WORKDIR ${HOME}/pdns/pdns/recursordist
+RUN inv apt-fresh
+RUN inv install-clang
+RUN inv install-rec-build-deps
+RUN inv ci-autoconf
+RUN inv ci-rec-configure
+RUN inv ci-rec-make
+RUN inv ci-make-install
+
+# Test deps
+WORKDIR ${HOME}/pdns
+RUN inv add-auth-repo debian bullseye 45
+RUN inv install-rec-test-deps
+
+RUN mkdir -p /var/run/pdns-recursor
+
+EXPOSE 53
+CMD ["sleep", "infinity"]

@@ -1,0 +1,4 @@
+; root name servers needed to initialize cache of Internet domain name servers
+.                       3600      NS    a.root-servers.pdns.
+a.root-servers.pdns.    3600     A     127.0.0.100
+

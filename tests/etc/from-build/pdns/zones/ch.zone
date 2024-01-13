@@ -1,0 +1,25 @@
+ch.         900     IN	    SOA	        ns1.ch. hostmaster.ch 0 10800 3600 604800 3600
+
+; NS
+ch.         900	    IN	    NS	        ns1.ch.
+ch.         900	    IN	    NS	        ns2.ch.
+ns1.ch.	    900	    IN	    A	        192.168.0.2
+ns2.ch.	    900	    IN	    A	        192.168.0.2
+
+; MX
+ch.	        900	    IN	    MX	        20 mx2.ch.
+ch.	        900     IN	    MX	        10 mx1.ch.
+
+; A
+*.ch.	    900	    IN	    A	        192.168.0.2
+ch.	        900	    IN	    A	        192.168.0.2
+
+; AAAA
+*.ch.       900	    IN	    AAAA	    2002:aaaa::1ce:1ce:babe
+*.ch.	    900	    IN	    AAAA	    2002:aaaa::cafe:babe
+ch.         900	    IN	    AAAA	    2002:aaaa::1ce:1ce:babe
+ch.	        900	    IN	    AAAA	    2002:aaaa::cafe:babe
+
+; TXT
+*.ch.	    900	    IN	    TXT	        "PowerDNS Rocks!"
+ch.	        900	    IN	    TXT	        "PowerDNS Rocks!"

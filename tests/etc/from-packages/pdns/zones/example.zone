@@ -1,0 +1,25 @@
+example.            600     IN	    SOA	        ns1.example. hostmaster.example 0 10800 3600 604800 3600
+
+; NS
+example.            20	    IN	    NS	        ns1.example.
+example.            20	    IN	    NS	        ns2.example.
+ns1.example.	    20	    IN	    A	        192.168.0.2
+ns2.example.	    20	    IN	    A	        192.168.0.2
+
+; MX
+example.	        20	    IN	    MX	        20 mx2.example.
+example.	        20     IN	    MX	        10 mx1.example.
+
+; A
+*.example.	        20	    IN	    A	        192.168.0.2
+example.	        20	    IN	    A	        192.168.0.2
+
+; AAAA
+*.example.          20	    IN	    AAAA	    2002:aaaa::1ce:1ce:babe
+*.example.	        20	    IN	    AAAA	    2002:aaaa::cafe:babe
+example.            20	    IN	    AAAA	    2002:aaaa::1ce:1ce:babe
+example.	        20	    IN	    AAAA	    2002:aaaa::cafe:babe
+
+; TXT
+*.example.	        20	    IN	    TXT	        "PowerDNS Rocks!"
+example.	        20	    IN	    TXT	        "PowerDNS Rocks!"
