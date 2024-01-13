@@ -50,7 +50,7 @@ module.exports = {
 	 * server basis to control which programs are tested on that
 	 * server.  Omit or set to { } if not required.
 	 */
-	queueFilter: {type: {$in: ['bind', 'pdns']}},
+	queueFilter: {},
 	// queueFilter: {type: {$in: ['bind', 'echo', 'knot', 'nsd']}},
 
 	/*
@@ -74,18 +74,39 @@ module.exports = {
 	 */
 
 	agents: {
-		bind: {
-			repo: { vcs: 'git', url: 'https://gitlab.isc.org/isc-projects/bind9.git' }
-		},
 		pdns: {
 			commands: {
 				docker: '/usr/bin/docker'
 			},
 			args: {
-				auth: '--config-name=lmdb',
+				auth: '',
 				rec: '',
 			},
-			config_folder: '/home/ubuntu/openstack-isc-lab'
+			config_folder: './'
+		}
+	},
+
+	default_scenarios: {
+		from_dockerhub: {
+			PDNS_BIN_DIR: '/usr/local/sbin',
+			PDNS_BACKEND: 'lmdb',
+			PDNS_ZONES_DIR: '/etc/powerdns/zones',
+			ADDITIONAL_PARAMS_AUTH: '',
+			ADDITIONAL_PARAMS_REC: ''
+		},
+		from_repo: {
+			PDNS_BIN_DIR: '/usr/local/sbin',
+			PDNS_BACKEND: 'lmdb',
+			PDNS_ZONES_DIR: '/etc/powerdns/zones',
+			ADDITIONAL_PARAMS_AUTH: '',
+			ADDITIONAL_PARAMS_REC: ''
+		},
+		from_package: {
+			PDNS_BIN_DIR: '/usr/sbin',
+			PDNS_BACKEND: 'lmdb',
+			PDNS_ZONES_DIR: '/etc/powerdns/zones',
+			ADDITIONAL_PARAMS_AUTH: '',
+			ADDITIONAL_PARAMS_REC: ''
 		}
 	},
 
